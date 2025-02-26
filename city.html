@@ -16,10 +16,13 @@
     <button onclick="checkCity()">Check the guess</button>
     <br><br>
     <div id="result">Correct: 0 | Wrong: 0</div>
-
+    <div>
+        <img id ="petImage" src="uki.jpg" width="150" height="150" onclick="updatePic()">
+    </div>
     <script>
         let oops = 0;
         let found = 0;
+        
 
         function checkCity() {
             let secret = document.getElementById("secretCity").value;
@@ -34,6 +37,28 @@
             }
             
             document.getElementById("result").innerHTML = `Found: ${found} | oops: ${oops}`;
+            
+          
+    }
+
+    let usePic =1;
+            function updatePic() {
+            let imgElement = document.getElementById('petImage');
+
+            switch (usePic) {
+                case 1:
+                    imgElement.src = "dobby.jpg";
+                    usePic = 2;
+                    break;
+                case 2:
+                    imgElement.src = "gizmo.jpg";
+                    usePic = 3;
+                    break;
+                case 3:
+                    imgElement.src = "uki.jpg";
+                    usePic = 1;
+                    break;
+            }
         }
     </script>
 </body>

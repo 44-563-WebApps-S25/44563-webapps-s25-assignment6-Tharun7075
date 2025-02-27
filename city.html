@@ -7,13 +7,16 @@
 </head>
 <body>
     <h2>City Guessing Game</h2>
+    <form>
     <label for="secretCity">Where in the world:</label>
     <input type="password" id="secretCity" value="San Diego">
     <br><br>
     <label for="guessCity">Guess the city:</label>
     <input type="text" id="guessCity">
     <br><br>
-    <button onclick="checkCity()">Check the guess</button>
+    <button onclick="checkCity()" id="">Check the guess</button>
+</form>
+
     <br><br>
     <div id="result">Correct: 0 | Wrong: 0</div>
     <div>
@@ -27,6 +30,9 @@
         function checkCity() {
             let secret = document.getElementById("secretCity").value;
             let guess = document.getElementById("guessCity").value;
+            let foundOut = document.getElementById("found");
+            let oopsOut = document.getElementById("oops");
+            let option = document.getElementById("option");
             
             if (guess === secret) {
                 found++;
@@ -37,9 +43,19 @@
             }
             
             document.getElementById("result").innerHTML = `Found: ${found} | oops: ${oops}`;
-            
-          
+            foundOut.innerHTML = found;
+            oopsOut.innerHTML = oops;
+
+    if (oops > 2 * found) {
+        option.setAttribute("onclick", "selections()")
     }
+}
+
+function selections() {
+    alert("Sorry, too many wrong selections.");
+}    
+          
+    
 
     let usePic =1;
             function updatePic() {
